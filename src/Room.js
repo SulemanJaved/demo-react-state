@@ -1,34 +1,26 @@
 import React, {useState} from 'react';
+import './Room.css'
 
 function Room() {
 let [isLit, setLit] = useState(true);
-let [fan, setFan] = useState(false);
-let [ac, setAC] = useState(false);
+let [roomTemp, setRoomTemp] = useState(22);
 
-function updateLit(){
-  console.log("Button clicked");
-  setLit(!isLit);
-}
 
   return (
-    <div>
+    <div className={`room ${isLit? "lit": "dark"}`}>
       <strong>Control Room</strong>
       <br/>
       <br/>
-      Room Light is <strong>{isLit? "Lit": "Dark"}</strong>
+      Room Light Status: <strong>{isLit? "On": "Off"}</strong>
       <br/>
-      <button onClick={updateLit} >Toggle Light</button>
+      <button onClick={()=> setLit(true)} >On</button>
+      <button onClick={()=> setLit(false)} >Off</button>
       <br/>
-      Room Fan is <strong>{fan? "On": "Off"}</strong>
       <br/>
-      <button onClick={ ()=> {
-      console.log("Button clicked");
-      setFan(!fan);
-      }} >Toggle Fan</button>
+      Room Temprature Status: <strong>{roomTemp}</strong>
       <br/>
-      Room AC is <strong>{ac? "On": "Off"}</strong>
-      <br/>
-      <button onClick={()=> setAC(!ac)} >Toggle AC</button>
+      <button onClick={()=> setRoomTemp(++roomTemp)} >+</button>
+      <button onClick={()=> setRoomTemp(--roomTemp)}>-</button>
     </div>
   );
 }
