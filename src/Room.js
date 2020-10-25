@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function App() {
+function Room() {
 let [isLit, setLit] = useState(true);
 let [fan, setFan] = useState(false);
 let [ac, setAC] = useState(false);
@@ -12,22 +12,25 @@ function updateLit(){
 
   return (
     <div>
-      Room Light {isLit? "Lit": "Dark"}
+      <strong>Control Room</strong>
+      <br/>
+      <br/>
+      Room Light is <strong>{isLit? "Lit": "Dark"}</strong>
       <br/>
       <button onClick={updateLit} >Toggle Light</button>
       <br/>
-      Room Fan is {fan? "On": "Off"}
+      Room Fan is <strong>{fan? "On": "Off"}</strong>
       <br/>
       <button onClick={ ()=> {
       console.log("Button clicked");
       setFan(!fan);
       }} >Toggle Fan</button>
       <br/>
-      Room AC is {ac? "On": "Off"}
+      Room AC is <strong>{ac? "On": "Off"}</strong>
       <br/>
       <button onClick={()=> setAC(!ac)} >Toggle AC</button>
     </div>
   );
 }
  
-export default App;
+export default Room;
